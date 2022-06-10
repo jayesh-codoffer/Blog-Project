@@ -16,15 +16,22 @@
             }
             .container{
                 background: #fff;
-                margin-top:100px;
+                margin-top:50px;
             }
             .error{
                 color:red;
             }
+            .a{
+                
+                margin-top:50px;
+                margin-left:40px;
+            }
         </style>   
 </head>
 <body>
-    
+    <div class="a">
+        <a href="{{route('book.index')}}"class="btn btn-warning">Go to list</a>
+    </div>
     <div class="container sm">
         <h4>Add Book Details</h4>
 <form action="{{route('book.store')}}" method="POST" id="form">
@@ -32,7 +39,11 @@
     <div class="mb-3">
         <label for="title"><b>Title:</b></label>
         <input type="text" class="form-control" name="title" id="title">
-        
+        @if ($errors->has('title'))
+        <div class="text-danger">
+         {{$errors->first('title')}}
+        </div>
+    @endif
     </div>
     <div class="mb-3">
         <label for="description"><b>Description:</b></label>
@@ -46,10 +57,15 @@
     <div class="mb-3">
         <label for="author"><b>Author:</b></label>
         <input type="text" class="form-control" name="author"id="author">
+        @if ($errors->has('author'))
+        <div class="text-danger">
+         {{$errors->first('author')}}
+        </div>
+    @endif
     </div>
    
         <button type="submit" class="btn btn-success"id="sumbit">Submit</button>
-        <a href="{{route('book.index')}}"class="btn btn-warning">Home</a>
+        
 </form>
 </div>
 <script>
