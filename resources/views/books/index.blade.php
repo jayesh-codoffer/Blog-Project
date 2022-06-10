@@ -15,20 +15,29 @@
         }
         .container{
             background: #fff;
-            margin-top:100px;
+            margin-top:10px;
         }
         .error{
             color:red;
         }
+        .a{
+                
+                margin-top:20px;
+                margin-left:1180px;
+            }
+            
     </style>    
 </head>
 <body>
-    <div class="card mx-auto px-auto">
+    <div class="a">
+        <a href="{{route('book.create')}}" class="btn btn-info">Add Book</a>    
+    </div>   
+    <div class="card">
        
     </div>    
-    <div class="container mx-auto">
+    <div class="container">
        <h4>Display Data</h4>
-       <a href="{{route('book.create')}}" class="btn btn-info">Add Book</a>
+       
         <table class="table">
             <thead class="card-header bg-dark text-white">
                 <tr>    
@@ -50,7 +59,7 @@
                    
                         
                         <td><a class="btn btn-primary m" href="{{route('book.edit',$book->id)}}">EDIT</a>
-                            <button class="btn btn-danger" type="submit" onclick="deleteBook('{{route('book.destroy',$book->id)}}')">Delete</button>
+                           <div style="margin-right:10px"><button class="btn btn-danger" type="submit" onclick="deleteBook('{{route('book.destroy',$book->id)}}')">Delete</button></div>
                    
                         {{-- <a class="btn btn-danger" href="{{route('book.destroy',$book->id)}}">DELETE</a> --}}
                     </td>

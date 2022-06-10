@@ -50,6 +50,12 @@ class BookController extends Controller
         ]);
     
         Book::create($request->all());
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
      
         return redirect(route('book.index'))
                         ->with('success','Book created successfully.');
