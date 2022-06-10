@@ -45,6 +45,7 @@
                     <th>TITLE</th>
                     <th>DESCRIPTION</th>
                     <th>AUTHOR</th>
+                    <th>IMAGE</th>
                     <th>Action</th>
                 </tr>               
             </thead>
@@ -56,6 +57,7 @@
                     <td>{{$book->title}}</td>
                     <td>{{$book->description}}</td>
                     <td>{{$book->author}}</td>
+                    <td><img src="public_path/image/{{ $book->image }}" width="100px"></td>
                    
                         
                         <td><a class="btn btn-primary m" href="{{route('book.edit',$book->id)}}">EDIT</a>

@@ -42,21 +42,19 @@ class BookController extends Controller
             'title' => 'required',
             'description' => 'required',
             'author' => 'required'
-        ],
-        [
-            'title.required'=>'title is required',
-            'description.required'=>'description is required',
-            'author.required'=>'author is required'      
+            
+          
         ]);
     
-        Book::create($request->all());
+         $input = $request->all();
         if ($image = $request->file('image')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }
-     
+        // Book::create($request->all());
+        Book::create($input);
         return redirect(route('book.index'))
                         ->with('success','Book created successfully.');
     }
@@ -131,8 +129,17 @@ public function delete(Request $req ,$id)
         $book->title = $request->input('title');
         $book->description = $request->input('description');
         $book->author = $request->input('author');
+        $input = $request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }else{
+            unset($input['image']);
+        }
         
-        $book->update();
+        $book->update($input);
         return redirect()->route('book.index')->with('status','Student Updated Successfully');
     }
 }

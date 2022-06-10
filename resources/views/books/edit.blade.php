@@ -47,6 +47,13 @@
         <label for="exampleInputPassword1" class="form-label"><b>Author:</b></label>
         <input type="text" class="form-control" name="author" value="{{isset($book->author) ? $book->author : ''}}">
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Image:</strong>
+            <input type="file" name="image" class="form-control" placeholder="image">
+            <img src="/image/{{ $book->image }}" width="300px">
+        </div>
+    </div>
    
         <button type="submit" class="btn btn-primary">Update</button>
         
