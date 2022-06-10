@@ -37,6 +37,11 @@
     <div class="mb-3">
         <label for="description"><b>Description:</b></label>
         <input type="text" class="form-control" name="description"id="description">
+       @if ($errors->has('description'))
+           <div class="text-danger">
+            {{$errors->first('description')}}
+           </div>
+       @endif
     </div>
     <div class="mb-3">
         <label for="author"><b>Author:</b></label>
